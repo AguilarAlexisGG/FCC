@@ -1,0 +1,186 @@
+/* --- 0. Variables de Color y Base --- */
+:root {
+  --color-principal: #003B5C; /* Azul oscuro BUAP */
+  --color-texto-claro: #E0F7FF; /* Un azul muy claro para texto sobre fondos oscuros */
+  --color-fondo: #f4f4f4;      /* Un gris muy claro para el fondo del body */
+  --color-borde: #dfe1e5;     /* Un gris suave para bordes */
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: var(--color-fondo);
+  line-height: 1.6;
+}
+
+
+/* --- 1. Clases de Marca BUAP (Consolidadas) --- */
+/* Clases de 'nuevo_estilo.css' y 'stylesheet.css' */
+.azul-oscuro-buap {
+  background-color: var(--color-principal) !important;
+}
+.azul-claro-buap-texto {
+  color: #009ec0 !important; /* Tono de 'stylesheet.css' */
+}
+.azul-oscuro-buap-text {
+  color: var(--color-principal) !important;
+}
+.azul-claro-buap {
+  background-color: #009ec0 !important;
+}
+
+
+/* --- 2. Clases de Utilidad (Integradas de 'stylesheet.css') --- */
+.text-small {
+  font-size: 0.8em !important;
+}
+.text-medium {
+  font-size: 1.1em;
+}
+
+
+/* --- 3. Navegación y Encabezado (Integrado de 'stylesheet.css') --- */
+#top {
+  width: 100%;
+  margin: 0em 0em;
+  border-radius: 0;
+}
+
+
+/* --- 4. Tipografía y Encabezados de Sección (De 'nuevo_estilo.css') --- */
+h2.ui.dividing.header {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--color-principal);
+  margin-top: 3.5rem; 
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--color-borde);
+}
+
+
+/* --- 5. Estilo de Tarjetas (Cards) (De 'nuevo_estilo.css') --- */
+.ui.card,
+.ui.segments {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease-in-out;
+}
+
+.ui.card:hover,
+.ui.segments:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.ui.card .content {
+  padding: 1.5rem;
+}
+
+.ui.card .description,
+.ui.card .center.aligned.description {
+  min-height: 50px; 
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.ui.card .content .icon {
+  font-size: 4em; 
+  padding-bottom: 1rem;
+  color: var(--color-principal);
+}
+
+
+/* --- 6. Botones de Acción (De 'nuevo_estilo.css') --- */
+.ui.card .ui.bottom.attached.button {
+  background-color: var(--color-principal);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  border-bottom-left-radius: 8px; 
+  border-bottom-right-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.ui.card .ui.bottom.attached.button:hover {
+  background-color: #005080; 
+  color: #ffffff;
+}
+
+
+/* --- 7. Sección de Avisos (¡MODIFICADO POR TU PETICIÓN!) --- */
+/* Esta regla hace que las imágenes de avisos sean cuadradas (aspect-ratio: 1/1)
+  y grandes (width: 100%).
+  'object-fit: cover' asegura que la imagen llene el espacio sin distorsionarse.
+*/
+.ui.segments .segment img {
+  width: 100%;            /* Ocupa todo el ancho de la columna */
+  height: auto;
+  aspect-ratio: 1 / 1;    /* Mantiene una relación de aspecto 1:1 (cuadrado) */
+  object-fit: cover;      /* Rellena el espacio sin distorsionar */
+  border-radius: 8px;
+  border: 1px solid var(--color-borde);
+}
+
+.ui.segments .segment {
+  border: none;
+  padding: 0.5em; /* Añade un pequeño espacio entre las imágenes */
+}
+
+
+/* --- 8. Pie de Página (Footer) (De 'nuevo_estilo.css' + 'stylesheet.css') --- */
+footer.ui.footer.segment {
+  padding-top: 4em;
+  padding-bottom: 3em;
+}
+
+/* Estilo para el logo BUAP en el footer (Integrado de 'stylesheet.css') */
+#logo_buap_footer a.escudo {
+  display: block;
+  margin: 0 auto;
+  /* ¡OJO! Tu 'stylesheet.css' original apuntaba a 'logo_buap.png'.
+    Dado que el fondo es azul oscuro, necesitarás un logo blanco.
+    He puesto 'logo_buap_blanco.png' como un ejemplo. 
+    Asegúrate de que la ruta y el nombre sean correctos.
+  */
+  background-image: url("../images/logo_buap_blanco.png"); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 220px;
+  height: 100px;
+}
+
+
+/* --- 9. Responsivo (Móvil) (¡CRÍTICO! Integrado de 'stylesheet.css') --- */
+/* Estas reglas son las que ocultan el menú de escritorio y 
+  muestran el icono de "hamburguesa" (toc.item) en móviles.
+*/
+@media only screen and (max-width: 700px) {
+  #menu_desplegable .item,
+  #menu_desplegable .menu {
+    display: none;
+  }
+  #menu_desplegable .toc.item {
+    display: block;
+  }
+  #menu_desplegable .header.item {
+    display: block;
+  }
+}
+/* --- 10. Estilo para Imágenes en Tarjetas (NUEVO) --- */
+/* Esta clase es para las imágenes/iconos en el header de las tarjetas */
+.card-image-header {
+  width: 100px;           /* Ancho fijo */
+  height: 100px;          /* Alto fijo (crea un cuadrado) */
+  object-fit: contain;    /* Asegura que la imagen quepa sin estirarse */
+  margin-top: 1rem;       /* Espacio superior */
+  margin-bottom: 1rem;    /* Espacio inferior */
+}
+
+/* --- 11. Estilo Logo Navbar (NUEVO) --- */
+/* Modifica el logo en la barra de navegación principal */
+#menu_desplegable img.navbar-logo {
+  height: 45px; /* Ajusta esta altura como necesites (ej. 50px) */
+  width: auto;  /* Mantiene la proporción */
+  margin-right: 1em; /* Añade espacio a la derecha */
+}

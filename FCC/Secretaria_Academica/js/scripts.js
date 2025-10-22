@@ -1,0 +1,184 @@
+// Carousel Auto-Cycle
+$(document).ready(function () {
+  //carrusel de inicio para cambiar imagenes solo poner la ruta
+  var carruselIndex = [
+    //'images/Semestre_Prim2018.jpg',
+    "images/meme.jpg",
+    "images/calendario_profesional_cuatrimestral 2019.png",
+    "images/calendario_profesional_semestral2019.png",
+
+    //'images/Cuatrimestre_Prim2018.jpg',
+
+    "images/Protocolos2019.jpg",
+    //'images/imagenpequeña.jpg'
+  ];
+  $.each(carruselIndex, function (index, url) {
+    if (index == 2) {
+      $("#carrusel").append(
+        '<div class="active item"><a href="http://puertasabiertas.cs.buap.mx"><img src=' +
+          url +
+          ' class="ui image" style="height: 370px;"></a></div>'
+      );
+    } else {
+      $("#carrusel").append(
+        '<div class="item"><img src=' +
+          url +
+          ' class="ui image" style="height: 370px;"></div>'
+      );
+    }
+  });
+  //carrusel de titulacion para cambiar imagenes solo poner la ruta
+  var carruselTitulacion = [
+    "images/recepcion_protocolos2020.jpg",
+    "images/Bannertitulacionnuevoformato-03.png",
+    "images/Bannertitulacionnuevoformato-02.png",
+    "images/Titulacion1.png",
+    "images/Titulacion2.png",
+    "images/Titulacion3.jpg",
+    "images/Titulacion4.png",
+    "images/TitulacionAviso.png",
+    "images/titulacion2023.jpg",
+
+    //'images/protocolos2017.jpg',
+    //'images/Titulacion6.jpg',
+    // 'images/Convocatoria_Experiencia_anual.jpg',
+    // 'images/Protocolos2019.jpg',
+  ];
+  $.each(carruselTitulacion, function (index, url) {
+    if (index == 0) {
+      $("#servEsc").append(
+        '<div class="active item"><a href="#"><img src=' +
+          url +
+          ' class="ui centered big image"></a></div>'
+      );
+    } else {
+      $("#servEsc").append(
+        '<div class="item"><a href="#"><img src=' +
+          url +
+          ' class="ui centered big image"></a></div>'
+      );
+    }
+  });
+  //carrusel de eventos y convocatorias para cambiar imagenes solo poner la ruta
+  var carruselEventos = [
+
+        /*cambios para el 2023, pero están pendientes*/
+
+        "images/2024/Oracle.jpg",
+        "images/2024/CCNA0.jpg",
+        "images/2024/CCNA1-.jpg",
+        "images/2024/CCNA1.jpg",
+        "images/2024/CCNA2.jpg",
+        "images/2024/CCNA3.jpg"    
+ 
+        /*"images/2022/CISCO_2022.jpg",
+        "images/2022/puertas_abiertas.png",
+	"images/2022/Certificate_Online.jpg",
+	"images/2022/Oracle_Cloud.png"*/
+ ];
+  /*
+      $.each(carruselEventos,function(index,url){
+         if (index==0) {
+            $("#eventos").append('<div class="active item"><a href="convocatorias/Convocatoria_Experiencia_docentefinal.pdf"><img src='+url+' class="ui centered big image"></a></div>');
+        }else{
+            $("#eventos").append('<div class="item"><a href="http://puertasabiertas.cs.buap.mx"><img src='+url+' class="ui centered big image"></a></div>');
+        }
+      });
+      */
+  $.each(carruselEventos, function (index, url) {
+    if (index == 0) {
+      $("#eventos").append(
+        '<div class="item active"><img src=' +
+          url +
+          ' class="ui centered big image"></div>'
+      );
+    } else {
+      $("#eventos").append(
+        '<div class="item"><img src=' +
+          url +
+          ' class="ui centered big image"></div>'
+      );
+    }
+  });
+
+  //carrusel de eventos y convocatorias para cambiar imagenes solo poner la ruta
+  var carruselAlumnos = [
+    "images/Programas/11.jpg",
+    "images/Programas/12.jpg",
+    "images/Programas/13.jpg",
+    "images/Programas/14.jpg",
+    "images/Programas/15.jpg",
+    "images/Programas/16.jpg",
+    "images/Programas/17.jpg",
+    "images/Programas/18.jpg",
+  ];
+  $.each(carruselAlumnos, function (index, url) {
+    if (index == 0) {
+      $("#programas").append(
+        '<div class="item active"><img src=' +
+          url +
+          ' class="ui centered big image"></div>'
+      );
+    } else {
+      $("#programas").append(
+        '<div class="item"><img src=' +
+          url +
+          ' class="ui centered big image"></div>'
+      );
+    }
+  });
+
+  $(".menu .item").tab();
+  $(".masthead").visibility({
+    once: false,
+    onBottomPassed: function () {
+      $(".fixed.menu").transition("fade in");
+    },
+    onBottomPassedReverse: function () {
+      $(".fixed.menu").transition("fade out");
+    },
+  });
+  // create sidebar and attach to menu open
+  $(".ui.sidebar").sidebar("attach events", ".toc.item");
+  //Menus desplegables
+  $(".ui.accordion").accordion();
+
+  //Carousel
+  $(".carousel").carousel({
+    interval: 5000,
+  });
+
+  //Tabs
+  $(".menu .item").tab();
+
+  var $demo = $(".ui.shape"),
+    $directionButton = $(".direction .button"),
+    handler;
+  // event handlers
+  handler = {
+    rotate: function () {
+      var $shape = $(this).closest(".buttons").prevAll(".ui.shape").eq(0),
+        direction = $(this).data("direction") || false,
+        animation = $(this).data("animation") || false;
+      if (direction && animation) {
+        $shape.shape(animation + "." + direction);
+      }
+    },
+  };
+
+  //Carrouseles giratorios
+  $demo.shape();
+  $directionButton.on("click", handler.rotate).popup({
+    position: "bottom center",
+  });
+  //facebook plugin
+  (function (d, s, id) {
+    var js,
+      fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+    fjs.parentNode.insertBefore(js, fjs);
+  })(document, "script", "facebook-jssdk");
+});
